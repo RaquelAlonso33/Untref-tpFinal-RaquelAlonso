@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-function Propiedad() {
-  const [propiedad, setPropiedad] = useState([]);
+function Ubicacion() {
+  const [ubicacion, setUbicacion] = useState([]);
   const [selectedOption, setSelectedOption] = useState('');
 
   useEffect(() => {
-    fetch("https://653831aaa543859d1bb14d53.mockapi.io/propiedades")
+    fetch("https://653831aaa543859d1bb14d53.mockapi.io/ubicaciones")
       .then((res) => res.json())
       .then((info) => 
-      setPropiedad(info));
+      setUbicacion(info));
   }, []);
 
   const handleChange = (event) => {
@@ -18,11 +18,11 @@ function Propiedad() {
 
   return (
     <form >
-      <label htmlFor="selectOption" >Selecciona un tipo de propiedad:</label><br/>
+      <label htmlFor="selectOption" >Selecciona la ubicacion de la propiedad:</label><br/>
       <select id="selectOption" value={selectedOption} onChange={handleChange} >
        <option></option>
-       {propiedad.map ((propiedad) =>(
-          <option key={propiedad.id} value={propiedad.id}>{propiedad.tipo}</option>
+       {ubicacion.map ((ubicacion) =>(
+          <option key={ubicacion.id} value={ubicacion.id}>{ubicacion.tipo}</option>
         ))}
       </select>
        
@@ -31,4 +31,4 @@ function Propiedad() {
   );
 }
 
-export default Propiedad;
+export default Ubicacion;
